@@ -1,0 +1,31 @@
+h1 {
+    color: blue;
+}
+
+h3 {
+    color: red;
+}
+
+button {
+    color: green;
+    width: 200px;
+    height: 20px;
+}
+
+#label_nombre {
+    text-align: center;
+    color: red;
+}
+
+#label_apellido {
+    text-align: center;
+    color: yellow;
+}
+
+div {
+    background-color: lightblue;
+}
+
+body {
+    background-color: #2980b9;
+}
