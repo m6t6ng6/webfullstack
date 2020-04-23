@@ -32,7 +32,7 @@ var misDatos = {
         pais: "Argentina",
         fecha: "Sabado 29-SEP-1984 19:00"
     }
-}
+};
 
-console.log(misDatos)
-console.log(JSON.stringify(misDatos))
+console.log(misDatos);
+console.log(JSON.stringify(misDatos));
