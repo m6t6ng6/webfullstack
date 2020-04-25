@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery: Sintaxis</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <h1>Titular</h1>
+
+        <h2 class="titulo">Este es un titular de menor relevancia</h2>
+        <h2 class="titulo">Este es un titular de menor relevancia</h2>
+        <h2 class="titulo">Este es un titular de menor relevancia</h2>
+
+        <p id="titular">Un elemento p, cuyo id es titular y se ocultar&aacute;</p>
+
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("h1").hide();//Oculta todos los elementos h1
+                $(".titulo").hide();//Oculta todos los elementos con clase titulo
+                $("#titular").hide();//Oculta elemento con id titular
+            });
+        </script>
+    </body>
+</html>

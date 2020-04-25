@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery: Obtener valor</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <input name="nombre" id="name" value="Juan" />
+
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                var nombre = $("#name").val();
+
+                console.log(nombre);
+            });
+        </script>
+    </body>
+</html>

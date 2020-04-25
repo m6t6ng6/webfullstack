@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery: Evento usando on</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <button type="button">Saludar</button>
+
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                
+                $('button').on('click', function () {
+                    alert("Hola mundo");
+                    console.log("Hola mundo!");
+                });
+            });
+        </script>
+    </body>
+</html>

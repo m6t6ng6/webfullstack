@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery: Evento onClick</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <button type="button">Cambiar color de fondo</button>
+
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                
+                $('button').click(function() {
+                    console.log("Se ha hecho click sobre el boton");
+                    $('body').css('background-color', 'blue');
+                    $(this).html('Color de fondo cambiado');
+                });
+            });
+        </script>
+    </body>
+</html>

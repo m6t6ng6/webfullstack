@@ -1,0 +1,22 @@
+
+.titulo {
+    font-weight: 20px;
+}
+
+#titular {
+    font-weight: 25px;
+}
+
+.destacar {
+    font-weight: bold;
+    color: red;
+}
+
+.feedback {
+    color: red;
+    font-size: 12px;
+}
+
+.oculta {
+    display: none;
+}

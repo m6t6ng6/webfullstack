@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery: Each</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <h2 class="destacado">Titulo</h2>
+        <h2 class="destacado">Titulo</h2>
+        <h2>Titulo</h2>
+        <h2>Titulo</h2>
+        <h2 class="destacado">Titulo</h2>
+        <p class="contador"></p>
+
+        <script
+  src="http://code.jquery.com/jquery-3.5.0.js"
+  integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+  crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function(){
+
+                var contador = 0;
+
+                $("h2").each(function(){  
+                    if ($(this).hasClass('destacado')) {
+                        contador++;
+                        console.log("Tiene clase destacado");
+                    }
+                });
+
+                $(".contador").text(contador);
+            });
+        </script>
+    </body>
+</html>
