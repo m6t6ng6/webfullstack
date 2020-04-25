@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>jQuery: Primer ejercicio</title>
-
+        <link rel="stylesheet" type="text/css" href="css/ejercicio1.css"> 
     </head>
     <body>
         <!--
@@ -12,10 +12,15 @@
             2. Utilizar la funcion addClass/removeClass sobre algunos elementos 
             3. Dado un elemento input, obtener su valor  y mostrarlo en la consola
         -->
-        <h1>Titulo</h1>
+        <h1 class="destacado2">Titulo</h1>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo,
              placeat obcaecati! Consectetur delectus nostrum laborum, ipsam laboriosam 
              doloremque rem alias inventore, neque, 
             itaque necessitatibus! Maxime sit itaque sapiente tempore repellat!</p>
+        <!--<script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>-->
+        <label for="inputText">Ingrese texto </label>
+        <input type="text" id="inputText" name="inputText" value="hola">
+        <script src="js/jquery-3.5.0.min.js"></script>
+        <script src="js/ejercicio1.js"></script>
     </body>
 </html>
