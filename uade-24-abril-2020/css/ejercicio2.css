@@ -1,0 +1,19 @@
+.destacado {
+    background-color: red;
+}
+
+.destacado2 {
+    color: red;
+}
+
+.notValid {
+    border: 1px solid red;
+}
+
+.formError {
+    color: red;
+}
+
+.valid {
+    border: 1px solid green;
+}

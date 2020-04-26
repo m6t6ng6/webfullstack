@@ -2,35 +2,30 @@
 <html>
     <head>
         <title>jQuery: Validacion de formulario</title>
-        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/ejercicio2.css">
     </head>
     <body>
         <!-- 
             Dado el siguiente formulario, validar los campos mediante el uso de jQuery 
             -TIP: Googlear lo que desean validar (Ej: validar input text jquery)
         -->
+        <p class="formError">Complete todos los campos para poder continuar!</p>
         <form action="">
-            <label>Nombre
-                <input type="text" name="nombre" placeholder="Ingresa tu nombre">
+            <label>Nombre * 
+                <input class="notValid inputs" type="text" name="nombre" placeholder="Ingresa tu nombre"><br><p id="nombre_ayuda" class="notValid">Debe contener como minimo 1 caracter y maximo 30.</p>
             </label>
             <br/>
-            <label>Apellido
-                <input type="text" name="apellido" placeholder="Ingresa tu apellido">
+            <label>Apellido * 
+                <input class="notValid inputs" type="text" name="apellido" placeholder="Ingresa tu apellido"><br><p id="apellido_ayuda" class="notValid">Debe contener como minimo 1 caracter y maximo 30.</p>
             </label>
             <br/>
-            <label>Mail
-                <input type="text" name="mail" placeholder="Ingresa tu mail">
+            <label>Mail * 
+                <input class="notValid inputs" type="text" name="mail" placeholder="Ingresa tu mail"><br><p id="email_ayuda" class="notValid">Debe ser un correo valido.</p>
             </label>
             <br/>
-            <input type="submit" value="ENVIAR">
+            <input type="submit" name="boton" value="ENVIAR" disabled>
         </form>
-        <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                /**
-                 Aca ocurre la "magia"
-                */   
-            });
-        </script>
+        <script src="js/jquery-3.5.0.min.js"></script>
+        <script src="js/ejercicio2.js"></script>
     </body>
 </html>
