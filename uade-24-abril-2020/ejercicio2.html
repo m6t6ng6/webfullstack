@@ -9,18 +9,20 @@
             Dado el siguiente formulario, validar los campos mediante el uso de jQuery 
             -TIP: Googlear lo que desean validar (Ej: validar input text jquery)
         -->
-        <p class="formError">Complete todos los campos para poder continuar!</p>
+        <p>Por favor complete los campos con sus datos.</p>
+        <p>* es dato requerido.</p>
+        <p class="formError">Complete todos los campos marcados con * para poder continuar!</p>
         <form action="">
             <label>Nombre * 
-                <input class="notValid inputs" type="text" name="nombre" placeholder="Ingresa tu nombre"><br><p id="nombre_ayuda" class="notValid">Debe contener como minimo 1 caracter y maximo 30.</p>
+                <input class="notValid inputs" type="text" name="nombre" placeholder="Ingresa tu nombre"><br><p id="nombre_ayuda" class="notValid" required>Debe contener como minimo 2 caracter y maximo 30.</p>
             </label>
             <br/>
             <label>Apellido * 
-                <input class="notValid inputs" type="text" name="apellido" placeholder="Ingresa tu apellido"><br><p id="apellido_ayuda" class="notValid">Debe contener como minimo 1 caracter y maximo 30.</p>
+                <input class="notValid inputs" type="text" name="apellido" placeholder="Ingresa tu apellido"><br><p id="apellido_ayuda" class="notValid" required>Debe contener como minimo 2 caracter y maximo 30.</p>
             </label>
             <br/>
             <label>Mail * 
-                <input class="notValid inputs" type="text" name="mail" placeholder="Ingresa tu mail"><br><p id="email_ayuda" class="notValid">Debe ser un correo valido.</p>
+                <input class="notValid inputs" type="text" name="mail" placeholder="Ingresa tu mail"><br><p id="email_ayuda" class="notValid" required>Debe ser un correo valido.</p>
             </label>
             <br/>
             <input type="submit" name="boton" value="ENVIAR" disabled>

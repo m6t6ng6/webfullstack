@@ -10,7 +10,7 @@ $(document).ready(function(){
 // var valor = $("input").val();
 // console.log(valor);
 
-$(".formError").show();
+$(".formError").hide();
 $("#nombre_ayuda").hide();
 $("#apellido_ayuda").hide();
 $("#email_ayuda").hide();
@@ -28,7 +28,7 @@ $email.on('change', function(e){
     var tienePunto = contenido.includes(".");
     var largo = contenido.length;
 
-    if (largo >= 1 && largo <=30 && tieneArroba && tienePunto){
+    if (largo >= 2 && largo <=30 && tieneArroba && tienePunto){
         email_ok = true;
         console.log("input email: " + contenido + ", de largo: " + largo + ", es un correo valido; email_ok = " + email_ok);
         $("#email_ayuda").hide();
@@ -40,6 +40,7 @@ $email.on('change', function(e){
         $("#email_ayuda").show();
         $(this).addClass('notValid');
         $(this).removeClass('valid');
+        $(".formError").show();
     }
 });
 
@@ -47,7 +48,7 @@ $nombre.on('change', function(e){
     var contenido = $(this).val();
     var largo = contenido.length;
 
-    if (largo >= 1 && largo <= 30){
+    if (largo >= 2 && largo <= 30){
         nombre_ok = true;
         console.log("input nombre: " + contenido + ", de largo: " + largo + ", es un nombre valido; nombre_ok = " + nombre_ok);
         $("#nombre_ayuda").hide();
@@ -59,6 +60,7 @@ $nombre.on('change', function(e){
         $("#nombre_ayuda").show();
         $(this).addClass('notValid');
         $(this).removeClass('valid');
+        $(".formError").show();
     } 
 });
 
@@ -66,7 +68,7 @@ $apellido.on('change', function(e){
     var contenido = $(this).val();
     var largo = contenido.length;
 
-    if (largo >= 1 && largo <= 50){
+    if (largo >= 2 && largo <= 50){
         apellido_ok = true;
         console.log("input apellido: " + contenido + ", de largo: " + largo + ", es un apellido valido; apellido_ok = " + apellido_ok);
         $("#apellido_ayuda").hide();
@@ -78,6 +80,24 @@ $apellido.on('change', function(e){
         $("#apellido_ayuda").show();
         $(this).addClass('notValid');
         $(this).removeClass('valid');
+        $(".formError").show();
     } 
 });
 
+var form = document.querySelector('form')
+var inputs = document.querySelectorAll('input')
+var required_inputs = document.querySelectorAll('input[required]')
+var register = document.querySelector('input[type="submit"]')
+form.addEventListener('keyup', function(e) {
+    var disabled = false
+    inputs.forEach(function(input, index) {
+        if (input.value === '' || !input.value.replace(/\s/g, '').length) {
+            disabled = true
+        }
+    })
+    if (disabled) {
+        register.setAttribute('disabled', 'disabled')
+    } else {
+        register.removeAttribute('disabled')
+    }
+})
