@@ -84,20 +84,20 @@ $apellido.on('change', function(e){
     } 
 });
 
-var form = document.querySelector('form')
-var inputs = document.querySelectorAll('input')
-var required_inputs = document.querySelectorAll('input[required]')
-var register = document.querySelector('input[type="submit"]')
+var form = document.querySelector('form');
+var inputs = document.querySelectorAll('input');
+var required_inputs = document.querySelectorAll('input[required]');
+var register = document.querySelector('input[type="submit"]');
 form.addEventListener('keyup', function(e) {
-    var disabled = false
+    var disabled = false;
     inputs.forEach(function(input, index) {
-        if (input.value === '' || !input.value.replace(/\s/g, '').length) {
-            disabled = true
+        if (input.value === '' || !input.value.replace(/\s/g, '').length || !apellido_ok || !nombre_ok || !email_ok) {
+            disabled = true;
         }
-    })
+    });
     if (disabled) {
-        register.setAttribute('disabled', 'disabled')
+        register.setAttribute('disabled', 'disabled');
     } else {
-        register.removeAttribute('disabled')
+        register.removeAttribute('disabled');
     }
-})
+});
