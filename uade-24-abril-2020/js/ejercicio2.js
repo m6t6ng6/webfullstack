@@ -1,14 +1,6 @@
-// item 1
 $(document).ready(function(){
     //$("body").addClass('destacado');
 });
-
-// item 2
-// $("h1").removeClass('destacado2');
-
-// item 3
-// var valor = $("input").val();
-// console.log(valor);
 
 $(".formError").hide();
 $("#nombre_ayuda").hide();
@@ -26,9 +18,10 @@ $email.on('change', function(e){
     var contenido = $(this).val();
     var tieneArroba = contenido.includes("@");
     var tienePunto = contenido.includes(".");
+    var tieneEspacios = contenido.includes(" ");
     var largo = contenido.length;
 
-    if (largo >= 2 && largo <=30 && tieneArroba && tienePunto){
+    if (largo >= 2 && largo <=30 && tieneArroba && tienePunto && !tieneEspacios){
         email_ok = true;
         console.log("input email: " + contenido + ", de largo: " + largo + ", es un correo valido; email_ok = " + email_ok);
         $("#email_ayuda").hide();
@@ -46,9 +39,10 @@ $email.on('change', function(e){
 
 $nombre.on('change', function(e){
     var contenido = $(this).val();
+    var tieneEspacios = contenido.includes(" ");
     var largo = contenido.length;
 
-    if (largo >= 2 && largo <= 30){
+    if (largo >= 2 && largo <= 30 && !tieneEspacios){
         nombre_ok = true;
         console.log("input nombre: " + contenido + ", de largo: " + largo + ", es un nombre valido; nombre_ok = " + nombre_ok);
         $("#nombre_ayuda").hide();
