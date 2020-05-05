@@ -1,0 +1,91 @@
+.fondoInicial {
+    background-color: #dfe6e9;
+}
+
+.central {
+    vertical-align: middle;
+}
+
+.principal {
+    height: 100%;
+}
+
+.default {
+    /* display: inline-block; */
+    margin-top: 5px;
+    float: right;
+}
+
+.timerDisplay {
+    font: 1200% sans-serif;
+    float: left;
+}
+
+.timerBotonStart {
+    margin-top: 40px;
+    margin-left: none;
+    float: right;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    font-size: 50px;
+    color: white;
+    line-height: 140px;
+    text-align: center;
+    background: #10ac84;
+}
+
+.timerBotonReset {
+    border: 2px solid #b2bec3;
+    margin-top: 40px;
+    margin-left: 10px;
+    float: right;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    font-size: 50px;
+    color: #b2bec3;
+    line-height: 140px;
+    text-align: center;
+    background: white;
+}
+
+.linea {
+    width: 53px;
+    height: 0;
+    border: 1px solid black;
+    margin: 3px;
+    float: left;
+}
+
+.timerMenuMinutos {
+    /* display: inline-block; */
+    width: 10%;
+    margin-top: 70px;
+    float: left;
+}
+
+.timerMenuSegundos {
+    display: inline-block;
+    width: 20%;
+    /* margin-top: 100px; */
+    float: left;
+}
+
+.timerCumplido {
+    color: #44bd32;
+}
+
+.timerBotonStop {
+    margin-top: 40px;
+    margin-left: none;
+    float: right;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    font-size: 50px;
+    color: black;
+    line-height: 140px;
+    text-align: center;
+    background: #fbc531;
+}
