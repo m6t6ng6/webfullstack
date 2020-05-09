@@ -1,0 +1,74 @@
+* {
+    /* border: 1px solid red; */
+    background-color: #222f3e;
+    font-family: impact;
+    color: white;
+}
+
+html {
+    background-color: white !important;
+}
+
+.container {
+    border: 1px solid #576574;
+    margin-top: 100px;
+    max-width: 700px;
+}
+
+.panel-fecha {
+    border-bottom: 10px solid #576574;
+    font-size: 200%;
+    color: white;
+    padding: 35px 0 25px 0;
+    text-align: center;
+}
+
+.horareo {
+    margin-left: 60px;
+}
+
+.logo {
+    border-bottom: 10px solid #576574;
+}
+
+.logo-img {
+    padding: 20px 10px 10px 20px;
+    height: 100px;
+    width: 100px;
+}
+
+.separador {
+    font-size: 800%;
+    padding: 25px 20px 25px 0;
+    float: left;
+}
+
+.panel-hora-minutos h2.horareo, .panel-hora-minutos h2.minutero {
+    font-size: 800%;
+    padding: 40px 20px 40px 0;
+    float: left;
+}
+
+/* .sin-padding > [class*='col-'] h2.segundero {
+    padding: 0 0 0 0;
+} */
+
+.panel-general {
+    border: 10px solid #576574;
+}
+
+.flag-mediodia {
+    padding-top: 50px;
+    font-size: 300%;
+    float: left;
+}
+
+.segundero {
+    font-size: 300%;
+    padding-left: 5px;
+    float: left;
+}
+
+.referencia {
+    text-align: center;
+}
