@@ -76,6 +76,10 @@
     color: #44bd32;
 }
 
+.timerError {
+    color: red;
+}
+
 .timerBotonStop {
     margin-top: 40px;
     margin-left: none;
@@ -88,4 +92,8 @@
     line-height: 140px;
     text-align: center;
     background: #fbc531;
+}
+
+.error {
+    border: 1px solid red;
 }
