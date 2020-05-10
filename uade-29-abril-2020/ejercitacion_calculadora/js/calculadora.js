@@ -168,12 +168,12 @@ function validacion(signoActual) {
             if ( operacion.length != 0 ) {
                 operacion[operacion.length - 1] = signoActual;
             }
-        } else if ( operacion[operacion.length - 1].includes("÷") ) {
+        } else if ( operacion[operacion.length - 1].includes("/") ) {
             console.log("÷");
             if ( operacion.length != 0 ) {
                 operacion[operacion.length - 1] = signoActual;
             }
-        } else if ( operacion[operacion.length - 1].includes("•") ) {
+        } else if ( operacion[operacion.length - 1].includes("*") ) {
             console.log("•");
             if ( operacion.length != 0 ) {
                 operacion[operacion.length - 1] = signoActual;
@@ -183,7 +183,7 @@ function validacion(signoActual) {
             if ( operacion.length != 0 ) {
                 operacion[operacion.length - 1] = signoActual;
             }
-        } else if ( operacion[operacion.length - 1].includes("–") ) {
+        } else if ( operacion[operacion.length - 1].includes("-") ) {
             console.log("–");
             if ( operacion.length != 0 ) {
                 operacion[operacion.length - 1] = signoActual;
@@ -228,11 +228,11 @@ $('.igual').on('click', function() {
             auxiliar.push(operacion[i])
         } else if ( operacion[i].includes("+") ) {
             auxiliar.push("+");
-        } else if ( operacion[i].includes("–") ) {
+        } else if ( operacion[i].includes("-") ) {
             auxiliar.push("-");
-        } else if ( operacion[i].includes("•") ) {
+        } else if ( operacion[i].includes("*") ) {
             auxiliar.push("*"); 
-        } else if ( operacion[i].includes("÷") ) {
+        } else if ( operacion[i].includes("/") ) {
             auxiliar.push("/");
         }
     }
