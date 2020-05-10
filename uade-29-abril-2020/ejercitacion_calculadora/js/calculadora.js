@@ -116,17 +116,17 @@ $('.sumar').on('click', function() {
 });
 
 $('.restar').on('click', function() {
-    validacion(" – ");
+    validacion(" - ");
     $('.display-text-operaciones').text(operacion.join(''));
 });
 
 $('.multiplicar').on('click', function() {
-    validacion(" • ");
+    validacion(" * ");
     $('.display-text-operaciones').text(operacion.join(''));
 });
 
 $('.dividir').on('click', function() {
-    validacion(" ÷ ");
+    validacion(" / ");
     $('.display-text-operaciones').text(operacion.join(''));
 });
 
