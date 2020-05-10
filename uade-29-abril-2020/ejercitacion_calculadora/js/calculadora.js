@@ -1,109 +1,79 @@
 $( document ).ready(function() {
-    $('.parentesis-izq').hide();
-    $('.parentesis-der').hide();
-    $('.guardar').hide();
-    $('.atras').hide();
-    $('.igual').hide();
+    botonesInicial();
 });
 
 operacion = [];
 resultado = "";
 
 $('.siete').on('click', function() {
-    $('.igual').show();
-    $('.guardar').hide();
-    $('.atras').show();
+    accionEnBotonesNumericos();
     operacion.push("7");
     $('.display-text-operaciones').text(operacion.join(''));
 });
 
 $('.ocho').on('click', function() {
-    $('.igual').show();
-    $('.guardar').hide();
-    $('.atras').show();
+    accionEnBotonesNumericos();
     operacion.push("8");
     $('.display-text-operaciones').text(operacion.join(''));
 });
 
 $('.nueve').on('click', function() {
-    $('.igual').show();
-    $('.guardar').hide();
-    $('.atras').show();
+    accionEnBotonesNumericos();
     operacion.push("9");
     $('.display-text-operaciones').text(operacion.join(''));
 });
 
 $('.cuatro').on('click', function() {
-    $('.igual').show();
-    $('.guardar').hide();
-    $('.atras').show();
+    accionEnBotonesNumericos();
     operacion.push("4");
     $('.display-text-operaciones').text(operacion.join(''));
 });
 
 $('.cinco').on('click', function() {
-    $('.igual').show();
-    $('.guardar').hide();
-    $('.atras').show();
+    accionEnBotonesNumericos();
     operacion.push("5");
     $('.display-text-operaciones').text(operacion.join(''));
 });
 
 $('.seis').on('click', function() {
-    $('.igual').show();
-    $('.atras').show();
+    accionEnBotonesNumericos();
     operacion.push("6");
     $('.display-text-operaciones').text(operacion.join(''));
 });
 
 $('.uno').on('click', function() {
-    $('.igual').show();
-    $('.atras').show();
+    accionEnBotonesNumericos();
     operacion.push("1");
     $('.display-text-operaciones').text(operacion.join(''));
 });
 
 $('.dos').on('click', function() {
-    $('.igual').show();
-    $('.guardar').hide();
-    $('.atras').show();
+    accionEnBotonesNumericos();
     operacion.push("2");
     $('.display-text-operaciones').text(operacion.join(''));
 });
 
 $('.tres').on('click', function() {
-    $('.igual').show();
-    $('.guardar').hide();
-    $('.atras').show();
+    accionEnBotonesNumericos();
     operacion.push("3");
     $('.display-text-operaciones').text(operacion.join(''));
 });
 
 $('.cero').on('click', function() {
-    $('.igual').show();
-    $('.guardar').hide();
-    $('.atras').show();
+    accionEnBotonesNumericos();
     operacion.push("0");
     $('.display-text-operaciones').text(operacion.join(''));
 });
 
 $('.borrar').on('click', function() {
-    $('.guardar').hide();
-    $('.atras').hide();
-    $('.igual').hide();
-    $('.tecla-operacion').show();
-    $('.tecla-numerica').show();
+    accionEnBotonesNumericos2();
     console.log("se presiono borrar")
     operacion = [];
     $('.display-text-operaciones').text(operacion.join(''));
 });
 
 $('.reiniciar').on('click', function() {
-    $('.guardar').hide();
-    $('.atras').hide();
-    $('.igual').hide();
-    $('.tecla-operacion').show();
-    $('.tecla-numerica').show();
+    accionEnBotonesNumericos2();
     console.log("se presiono reiniciar")
     operacion = [];
     $('.display-text-operaciones').text(operacion.join(''));
@@ -151,18 +121,18 @@ $('.atras').on('click', function() {
 });
 
 $('.guardar').on('click', function() {
-    $(this).hide();
-    $('.atras').hide();
-    $('.tecla-operacion').hide();
-    $('.tecla-numerica').hide();
+    $(this).hide();$('.tecla-muleto-guardar').show().text('S');
+    $('.atras').hide();$('.tecla-muleto-atras').show().text('B');
+    $('.tecla-operacion').hide();$('.tecla-muleto-operacion').show().text('');
+    $('.tecla-numerica').hide();$('.tecla-muleto-numerica').show().text('');
     $('.guardados').append('<h2 class="display-text-guardados">' + operacion.join('') + ' = ' + resultado.toString() + '</h2>');
     $('.display-text-operaciones').text("new entry saved!").css("font-size: 120%");
 });
 
 function validacion(signoActual) {
     if ( operacion.length > 0 ) {
-        $('.guardar').hide();
-        $('.atras').show();
+        $('.guardar').hide();$('.tecla-muleto-guardar').show().text('S');
+        $('.atras').show();$('.tecla-muleto-atras').hide().text('B');
         if ( operacion[operacion.length - 1].includes("+") ) {
             console.log("+");
             if ( operacion.length != 0 ) {
@@ -218,9 +188,9 @@ function validacion(signoActual) {
 }
 
 $('.igual').on('click', function() {
-    $(this).hide();
-    $('.atras').hide();
-    $('.guardar').show();
+    $(this).hide();$('.tecla-muleto-igual').show().text('=');
+    $('.atras').hide();$('.tecla-muleto-atras').show().text('B');
+    $('.guardar').show();$('.tecla-muleto-guardar').hide().text('S');
     auxiliar = [];
     for ( i = 0; i < operacion.length; i++) {
         console.log(operacion[i]);
@@ -240,3 +210,30 @@ $('.igual').on('click', function() {
     console.log("resultado de: " + auxiliar.join('') + "es: " + resultado);
     $('.display-text-resultado').text(resultado.toString().substring(0,13));
 });
+
+function botonesInicial () {
+    $('.parentesis-izq').hide();
+    $('.parentesis-der').hide();
+    $('.guardar').hide();$('.tecla-muleto-guardar').show().text('S');
+    $('.atras').hide();$('.tecla-muleto-atras').show().text('B');
+    $('.igual').hide();$('.tecla-muleto-igual').show().text('=');
+    $('.borrar').show();$('.tecla-muleto-borrar').hide().text('C');
+    $('.reiniciar').show();$('.tecla-muleto-reiniciar').hide().text('R');
+    $('.tecla-muleto-operacion').hide();
+    $('.tecla-muleto-numerica').hide();
+    $('.tecla-muleto-reiniciar').hide();
+}
+
+function accionEnBotonesNumericos() {
+    $('.igual').show();$('.tecla-muleto-igual').hide().text('=');
+    $('.guardar').hide();$('.tecla-muleto-guardar').show().text('S');
+    $('.atras').show();$('.tecla-muleto-atras').hide().text('B');
+}
+
+function accionEnBotonesNumericos2() {
+    $('.guardar').hide();$('.tecla-muleto-guardar').show().text('S');
+    $('.atras').hide();$('.tecla-muleto-atras').show().text('B');
+    $('.igual').hide();$('.tecla-muleto-igual').show().text('=');
+    $('.tecla-operacion').show();$('.tecla-muleto-operacion').hide().text('');
+    $('.tecla-numerica').show();$('.tecla-muleto-numerica').hide().text('');
+}

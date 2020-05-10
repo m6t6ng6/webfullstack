@@ -130,3 +130,12 @@ html {
     color: white;
     text-align: center;
 }
+
+.tecla-muleto-operacion, .tecla-muleto-igual, .tecla-muleto-numerica, .tecla-muleto-guardar, .tecla-muleto-reiniciar, .tecla-muleto-atras, .tecla-muleto-borrar {
+    font-size: 150%;
+    min-height: 47px;
+    padding: 5px 33px 0px 20px;
+    border: 2px solid #353b48;
+    color: #2f3640;
+    text-align: center;
+}
