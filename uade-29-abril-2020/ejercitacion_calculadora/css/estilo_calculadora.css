@@ -1,0 +1,132 @@
+* {
+    background-color: #2f3640;
+    color: #7f8fa6;
+    border-radius: 10px;
+}
+
+@font-face{
+    font-family: "digital";
+    src: url("../fonts/digital-7.ttf") format("truetype");
+}
+
+html {
+    background-color: white;
+}
+
+.container {
+    margin-top: 100px;
+    max-width: 500px;
+    min-height: 490px;
+}
+
+.display {
+    /* background-color: #273c75; */
+    margin: 10px 10px 10px 10px; 
+    padding: 10px 10px 10px 10px;
+    min-width: 450px;
+    max-width: 450px;
+}
+
+.display-text-resultado {
+    font-family: "digital";
+    font-size: 400%;
+    min-height: 95px;
+    background-color: #192a56;
+    padding: 10px 20px 0px 20px;
+    border: 2px solid #273c75;
+    color: white;
+    text-align: center;
+}
+
+.display-text-operaciones {
+    font-family: "digital";
+    font-size: 200%;
+    min-height: 45px;
+    background-color: #192a56;
+    padding: 5px 20px 0px 20px;
+    border: 2px solid #273c75;
+    color: white;
+    text-align: center;
+}
+
+.tecla-numerica {
+    font-size: 150%;
+    background-color: #718093;
+    min-height: 47px;
+    padding: 7px 33px 0px 20px;
+    border: 2px solid #7f8fa6;
+    color: #2f3640;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tecla-operacion {
+    font-size: 150%;
+    background-color: #8c7ae6;
+    min-height: 47px;
+    padding: 5px 33px 0px 20px;
+    border: 2px solid #9c88ff;
+    color: #2f3640;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tecla-operacion-igual {
+    font-size: 150%;
+    background-color: #44bd32;
+    min-height: 47px;
+    padding: 5px 33px 0px 20px;
+    border: 2px solid #4cd137;
+    color: #2f3640;
+    text-align: center;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.sumar {
+    margin-bottom: 30px;
+}
+
+.tecla-operacion-2 {
+    font-size: 150%;
+    background-color: #dcdde1;
+    min-height: 47px;
+    padding: 5px 33px 0px 20px;
+    border: 2px solid #f5f6fa;
+    color: #2f3640;
+    text-align: center;
+    cursor: pointer;
+}
+
+.atras {
+    font-size: 150%;
+    background-color: #c23616;
+    min-height: 47px;
+    padding: 5px 33px 0px 20px;
+    border: 2px solid #e84118;
+    color: #2f3640;
+    text-align: center;
+    cursor: pointer;
+}
+
+.guardar {
+    font-size: 150%;
+    background-color: #e1b12c;
+    min-height: 47px;
+    padding: 5px 33px 0px 20px;
+    border: 2px solid #fbc531;
+    color: #2f3640;
+    text-align: center;
+    cursor: pointer;
+}
+
+.display-text-guardados {
+    font-family: "digital";
+    font-size: 120%;
+    min-height: 35px;
+    background-color: #2f3640;
+    padding: 5px 20px 0px 20px;
+    border: 2px solid #353b48;
+    color: white;
+    text-align: center;
+}
