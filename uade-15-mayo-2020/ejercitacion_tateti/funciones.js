@@ -139,6 +139,7 @@ $(document).ready(function () {
           && cuadrado5.length == 1 && cuadrado6.length == 1 && cuadrado7.length == 1 && cuadrado8.length == 1
             && cuadrado9.length == 1 ) {
               $(".boton-reinicio").show();
+              $('#turno').text('finalizo el juego.'); 
             }
 
 
