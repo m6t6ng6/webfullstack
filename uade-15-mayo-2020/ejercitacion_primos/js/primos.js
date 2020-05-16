@@ -57,3 +57,23 @@ function esPrimo(numeroUsuario) {
     }
     return primo;
 }
+
+$('.boton-calculate').on('click', function() {
+    $('.respuesta').text("");
+    if ($('.input-numero-primo').val() != "") {
+        var numeroUsuario = parseInt($('.input-numero-primo').val(), 10);
+        console.log("numero introducido por el usuario: " + numeroUsuario);
+        var validacion = esPrimo(numeroUsuario);
+        console.log("validacion: " + validacion);
+        if ( validacion == true) {
+            $('.respuesta').append('<br><br><p style="background-color:white;text-align:center">' + numeroUsuario + " is a Prime Number.</p>");
+        } else {
+            $('.respuesta').append('<br><br><p style="background-color:white;text-align:center">' + numeroUsuario + " is <strong>not</strong> a Prime Number.</p>");
+        }
+    }
+});
+
+$('.boton-clear').on('click', function() {
+    $('.respuesta').text("");
+    $('.input-numero-primo').val("");
+});

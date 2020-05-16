@@ -1,13 +1,17 @@
 * {
-    /* border-color: #7f8c8d;
-    background-color: #ecf0f1; */
+    background-color: #ecf0f1;
     outline: none;
+    border-radius: 6px;
 }
 
-html, body {
+html, body, strong, span {
     background-color: white;
     min-height: 100%;
     height: 100%;
+}
+
+.area-respuesta, .area-respuesta .respuesta p{
+    background-color: white;
 }
 
 body {
@@ -27,11 +31,69 @@ body {
     text-align: center;
 }
 
-.content {
-    font-size: 14pt;
-    color: black;
-    text-align: center;
-    background-color: red;
-    width: 200px;
+.cuadro {
+    border: 2px solid #bdc3c7;
+    padding-top: 10px;
+}
+
+.titulo {
+    height: 55px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.boton-titulo {
+    cursor: default !important;
+    width: 500px;
+}
+
+.input-numero-primo {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 7px;
+}
+
+.boton-clear {
+    float: left;
+}
+
+.boton-clear .btn-default {
+    border: 2px solid #bdc3c7;
+}
+
+.panel-botones .col-3 {
+    max-width: 18%;
+}
+
+.boton-calculate {
+    float: right;
+    margin-left: 40px;
+}
+
+.boton-calculate .btn-default {
+    border: 2px solid #bdc3c7;
+}
+
+.area-respuesta {
+    padding-left: 5px;
+    background-color: white;
+    height: 160px;
+    margin-bottom: 15px;
+    text-align: left;
+    
+}
+
+.boton-clear {
+    height: 55px;
+}
+
+.form-group {
+    margin-left: 160px;
+    margin-right: 160px;
+}
+
+.respuesta {
+    background-color: white;
+    width: 100%;
     margin: 0 auto;
 }
