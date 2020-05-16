@@ -12,6 +12,8 @@
 .columna-turno {
   text-align: center;
   font-size: 24px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .cruz {
@@ -26,7 +28,10 @@
   color: #3b22c1;
 }
 
-
+.panel-boton {
+  margin-top: 100px;
+  text-align: center;
+}
 
 
 
