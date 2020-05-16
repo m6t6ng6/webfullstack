@@ -1,0 +1,54 @@
+.cuadrado {
+  height: 180px;
+  border: 3px solid black;
+  text-align: center;
+  cursor: pointer;
+}
+
+.container-tateti {
+  margin-top: 10px;
+}
+
+.columna-turno {
+  text-align: center;
+  font-size: 24px;
+}
+
+.cruz {
+  font-size: 210px;
+  line-height: 140px;
+  color: #c12525;
+}
+
+.circulo {
+  font-size: 140px;
+  line-height: 180px;
+  color: #3b22c1;
+}
+
+
+
+
+
+
+
+
+
+/* Borders */
+
+
+.no-border-left {
+  border-left: none;
+}
+
+.no-border-right {
+  border-right: none;
+}
+
+.no-border-top {
+  border-top: none;
+}
+
+.no-border-bottom {
+  border-bottom: none;
+}
