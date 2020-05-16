@@ -48,6 +48,7 @@ $(document).ready(function () {
         }, 100);
         $(".boton-reinicio").show();
         $('.cuadrado').off('click');
+        $('#turno').text('finalizo el juego.');
       }
     });
   }
@@ -143,10 +144,11 @@ $(document).ready(function () {
 
   }
 
-  $('.boton-reinicio').on('click', function(){
+  $('.boton-reinicio').on('click', function() {
     $('.cuadrado').children().remove();
     $(this).hide();
     $(".panel-ganador").hide();
+    calcularTurno();
     correrJuego();
   });
 
