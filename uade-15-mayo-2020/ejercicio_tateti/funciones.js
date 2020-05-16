@@ -1,57 +1,69 @@
 $(document).ready(function () {
 
-  var turno = 1;
+  var turno = Math.floor(Math.random() * 2);
   var turnoCirculo = null;
   var turnoCruz = null;
 
+  $(".boton-reinicio").hide();
+
   calcularTurno();
-
-  $('.cuadrado').on('click', function(){
-
-    // Verificar que el cuadrado no este ocupado
-    if ($(this).children().length == 1) {
-      return;
-    }
-
-    // Pintar circulo o cruz
-    if (turnoCruz) {
-      // Pinto cruz
-      $(this).append('<span class="cruz">×</span>');
-    } else {
-      // Pinto circulo
-      $(this).append('<span class="circulo">◯</span>');
-    }
-
-    // Cambiar cartel de "turno de"
-    if (turnoCruz) {
-      $('#turno').text('◯');
-    } else {
-      $('#turno').text('×');
-    }
-
-    // Avanzar un turno
-    turno++;
-    calcularTurno();
+  
+  correrJuego();
 
 
-    // Revisar si alguien gano o perdió
-    var ganador = alguienGano();
-    if (ganador) {
-      setTimeout(function() {
-        alert("El ganador fue: " + ganador);
-      }, 100);
-    }
-  });
+  function correrJuego() {
+    $('.cuadrado').on('click', function() {
+
+      // Verificar que el cuadrado no este ocupado
+      if ($(this).children().length == 1) {
+        return;
+      }
+
+      // Pintar circulo o cruz
+      if (turnoCruz) {
+        // Pinto cruz
+        $(this).append('<span class="cruz">×</span>');
+      } else {
+        // Pinto circulo
+        $(this).append('<span class="circulo">◯</span>');
+      }
+    
+      // Cambiar cartel de "turno de"
+      if (turnoCruz) {
+        $('#turno').text('◯');
+      } else {
+        $('#turno').text('×');
+      }
+    
+      // Avanzar un turno
+      turno++;
+      calcularTurno();
+    
+    
+      // Revisar si alguien gano o perdió
+      var ganador = alguienGano();
+      if (ganador) {
+        setTimeout(function() {
+          $(".panel-ganador").text("El ganador fue: " + ganador).show();
+        }, 100);
+        $(".boton-reinicio").show();
+        $('.cuadrado').off('click');
+      }
+    });
+  }
+ 
 
   function calcularTurno() {
     if (turno % 2 == 1) {
       // El numero turno sea IMPAR
       turnoCruz = true;
       turnoCirculo = false;
+      $('#turno').text('×');
     } else {
       // El numero turno sea PAR
       turnoCruz = false;
       turnoCirculo = true;
+      $('#turno').text('◯');
     }
   }
 
@@ -122,9 +134,20 @@ $(document).ready(function () {
       }
     }
 
+    if (cuadrado1.length == 1 && cuadrado2.length == 1 && cuadrado3.length == 1 && cuadrado4.length == 1 
+          && cuadrado5.length == 1 && cuadrado6.length == 1 && cuadrado7.length == 1 && cuadrado8.length == 1
+            && cuadrado9.length == 1 ) {
+              $(".boton-reinicio").show();
+            }
+
 
   }
 
-
+  $('.boton-reinicio').on('click', function(){
+    $('.cuadrado').children().remove();
+    $(this).hide();
+    $(".panel-ganador").hide();
+    correrJuego();
+  });
 
 });
