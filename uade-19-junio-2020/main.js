@@ -1,10 +1,20 @@
 const config_db = require('./config_db.js');
+//const uuid = require('uuid');
 
 config_db.conectar_a_mysql();
 config_db.listar_bases_de_datos();
 var nombre_db = config_db.conectar_a_base_de_datos("ecommerce");
 var nombre_db = config_db.conectar_a_base_de_datos("farmaceutica");
 var nombre_db = config_db.conectar_a_base_de_datos("concesionaria");
-let lista_tablas = config_db.listar_tablas(nombre_db);
-//console.log(lista_tablas);
+config_db.listar_tablas(nombre_db);
+config_db.select_a_base_de_datos(['*'], "autos", "cantidad_puertas < 3");
+config_db.select_a_base_de_datos(['marca_auto', 'estado_de_venta'], "autos", "estado_de_venta = 'reservado' GROUP BY marca_auto");
+config_db.select_a_base_de_datos(['nombre_de_pila', 'apellido'], "clientes", "codigo_postal LIKE '10%'");
+config_db.select_a_base_de_datos(['nombre_de_pila', 'apellido', 'telefono'], "clientes", "telefono LIKE '%65%' AND codigo_postal LIKE '%02'");
+//config_db.insert_a_base_de_datos('autos', ['id_auto', 'marca_auto', 'modelo_auto', 'cantidad_puertas', 'fecha_fabricacion', 'estado_de_venta'], [12, 'Peugeot', '207 RC', 3, '2010-07-04', 'disponible']);
+//config_db.insert_a_base_de_datos('autos', ['id_auto', 'marca_auto', 'modelo_auto', 'cantidad_puertas', 'fecha_fabricacion', 'estado_de_venta'], [13, 'Peugeot', '308 GTI', 5, '2016-09-29', 'disponible']);
+//config_db.insert_a_base_de_datos('autos', ['id_auto', 'marca_auto', 'modelo_auto', 'cantidad_puertas', 'fecha_fabricacion', 'estado_de_venta'], [14, 'Peugeot', '208 XY', 3, '2014-07-20', 'disponible']);
+//config_db.insert_a_base_de_datos('autos', ['id_auto', 'marca_auto', 'modelo_auto', 'cantidad_puertas', 'fecha_fabricacion', 'estado_de_venta'], [15, 'Peugeot', '208 GTI', 3, '2016-12-01', 'disponible']);
+//config_db.insert_a_base_de_datos('autos', ['id_auto', 'marca_auto', 'modelo_auto', 'cantidad_puertas', 'fecha_fabricacion', 'estado_de_venta'], [16, 'Peugeot', '2008', 5, '2018-09-10', 'disponible']);
+config_db.select_a_base_de_datos(['*'], "autos", "marca_auto = 'Peugeot'");
 config_db.desconectar_db();
