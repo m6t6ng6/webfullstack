@@ -1,0 +1,37 @@
+* {
+    /* border-color: #7f8c8d;
+    background-color: #ecf0f1; */
+    outline: none;
+}
+
+html, body {
+    background-color: white;
+    min-height: 100%;
+    height: 100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.table {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.cell {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.content {
+    font-size: 14pt;
+    color: black;
+    text-align: center;
+    background-color: red;
+    width: 200px;
+    margin: 0 auto;
+}
