@@ -7,11 +7,38 @@
         <link rel="stylesheet" href="./css/style.css">
     </head>
     <body>
+        <div class="bg"></div>
         <div class="table">
             <div class="cell">
-                <div class="content">
-                    <p class="email"></p>
-                    <button class="btn btn-warning">Obtener data</button>
+                <div class="content-fluid">
+                    <div class="row">
+                        <div class="col-4">
+                        </div>
+                        <div class="col-2">
+                            <div class="leyendaOficial leyenda btn btn-info hidden"><p></p></div>
+                            <div class="leyendaSolidario leyenda btn btn-info hidden"><p></p></div>
+                            <div class="leyendaAgro leyenda btn btn-info hidden"><p></p></div>
+                            <div class="leyendaBlue leyenda btn btn-info hidden"><p></p></div>
+                            <div class="leyendaCcl leyenda btn btn-info hidden"><p></p></div>
+                        </div>
+                        <div class="col-2">
+                            <div class="cotizacionOficial cotizacion btn btn-info hidden"><p></p></div>
+                            <div class="cotizacionSolidario cotizacion btn btn-info hidden"><p></p></div>
+                            <div class="cotizacionAgro cotizacion btn btn-info hidden"><p></p></div>
+                            <div class="cotizacionBlue cotizacion btn btn-info hidden"><p></p></div>
+                            <div class="cotizacionCcl cotizacion btn btn-info hidden"><p></p></div>
+                        </div>
+                        <div class="col-4">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="fechaCotizacion btn btn-dark hidden"><p></p></div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn consulta btn-warning">Consultar Cotización</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -30,27 +57,7 @@
             src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" 
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" 
             crossorigin="anonymous"></script>
-        <script>
-            $("button").click(function(){
-                $.ajax({
-                        url: "http://api.currencylayer.com/live?access_key=634738f605b4a7bce267a2c5475a4876",
-                        type: 'GET',
-                        dataType: 'json',
-                        success: (result) => {
-                            $(".email").text(result.quotes.USDARS);
-                            //$("#email").val(result.results[0].email);
-                            //$("#password").val(result.results[0].login.password);
-                            //$("#ciudad").val(result.results[0].location.city);
-                            //$(".rounded").attr('src', result.results[0].picture.thumbnail);
-                            //$(".rounded").removeClass('hidden');
-                            //console.log(result.results[0]);
-                            //document.title = result.results[0].name.first+" "+result.results[0].name.last;
-                        }, 
-                        error: function() {
-                            console.log("An error has occured");
-                        }
-                    });
-            });
-        </script>
+        <script 
+            src="./js/funciones_cliente.js"></script>
     </body>
 </html>

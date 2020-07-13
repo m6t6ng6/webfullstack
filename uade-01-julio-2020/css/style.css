@@ -1,13 +1,13 @@
 * {
-    /* border-color: #7f8c8d;
-    background-color: #ecf0f1; */
+    /* border-color: #7f8c8d; */
+    /* background-color: #ecf0f1;*/
     outline: none;
 }
 
 html, body {
     background-color: white;
-    min-height: 100%;
-    height: 100%;
+    min-height: 70%;
+    height: 70%;
 }
 
 body {
@@ -31,7 +31,32 @@ body {
     font-size: 14pt;
     color: black;
     text-align: center;
-    background-color: red;
     width: 200px;
     margin: 0 auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.cotizacion, .leyenda {
+    cursor: default;
+    width: 400px;
+}
+
+.fechaCotizacion {
+    margin: 30px 0 0 0;
+    cursor: default;
+}
+
+.consulta {
+    width: 400px;
+}
+
+.bg {
+    height: 100%;
+    background-image: url("https://previews.123rf.com/images/acarapi/acarapi1509/acarapi150900001/44629152-fondo-del-dinero-con-un-mont%C3%B3n-de-nuevos-billetes-de-100-d%C3%B3lares-estadounidenses-listo-para-utilizar-como-.jpg");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
