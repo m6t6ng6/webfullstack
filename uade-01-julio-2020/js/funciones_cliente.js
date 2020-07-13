@@ -3,8 +3,18 @@ $( document ).ready(function() {
 
 $(".consulta").click(function(){
     $(this).hide();
-    setInterval(mostrarValoresDolar(), 600000);
-    setInterval(mostrarValorInmediatamenteAnteriorAlActual(), 30000);
+    var primeraVuelta = true;
+    if (primeraVuelta === true) {
+        mostrarValoresDolar();
+        setTimeout(mostrarValorInmediatamenteAnteriorAlActual(), 10);
+        primeraVuelta = false;
+    } 
+    if (primeraVuelta === false) {
+        setInterval(function() {
+            mostrarValoresDolar();
+            setTimeout(mostrarValorInmediatamenteAnteriorAlActual(), 500);
+        }, 600000);
+    }
 });
 
 function mostrarValorInmediatamenteAnteriorAlActual() {
@@ -28,13 +38,13 @@ function mostrarValorInmediatamenteAnteriorAlActual() {
             setTimeout(function(){
                 if (status === 1) { // tiene que estar verde porque subio
                     $(".cotizacionOficial").removeClass('btn-secondary').removeClass('btn-info').removeClass('btn-danger').addClass('btn-success');
-                    $(".cotizacionOficial").text(cotizacionActual + "     " + (cotizacionActual/cotizacionAnterior - 1) + "%");
+                    $(".cotizacionOficial").text(cotizacionActual + "     " + (cotizacionActual/cotizacionAnterior - 1).toFixed(2) + "%");
                 } else if (status === -1) { // tiene que estar rojo porque bajo
                     $(".cotizacionOficial").removeClass('btn-secondary').removeClass('btn-info').removeClass('btn-success').addClass('btn-danger');
-                    $(".cotizacionOficial").text(cotizacionActual + "     " + (cotizacionActual/cotizacionAnterior - 1) + "%"); 
+                    $(".cotizacionOficial").text(cotizacionActual + "     " + (cotizacionActual/cotizacionAnterior - 1).toFixed(2) + "%"); 
                 } else if (status === 0) { // tiene que estar azul porque se mantuvo
                     $(".cotizacionOficial").removeClass('btn-secondary').removeClass('btn-success').removeClass('btn-danger').addClass('btn-info');
-                    $(".cotizacionOficial").text(cotizacionActual + "     " + (cotizacionActual/cotizacionAnterior - 1) + "%");  
+                    $(".cotizacionOficial").text(cotizacionActual + "     " + (cotizacionActual/cotizacionAnterior - 1).toFixed(2) + "%");  
                 }
                 $(".fechaCotizacion").removeClass('btn-secondary').addClass('btn-dark');
             }, 3000);
