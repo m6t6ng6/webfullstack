@@ -1,31 +1,64 @@
 $( document ).ready(function() {
 });
 
+var host = "localhost";
+var port = "3000";
+
 $(".consulta").click(function(){
     $(this).hide();
     var primeraVuelta = true;
     if (primeraVuelta === true) {
         mostrarValoresDolar();
-        setTimeout(mostrarValorInmediatamenteAnteriorAlActual(), 10);
+        setTimeout(mostrarValorInmediatamenteAnteriorAlActual(), 200);
+        mostrarValorMaximo();
+        mostrarValorMinimo();
         primeraVuelta = false;
     } 
     if (primeraVuelta === false) {
         setInterval(function() {
             mostrarValoresDolar();
             setTimeout(mostrarValorInmediatamenteAnteriorAlActual(), 500);
+            mostrarValorMaximo();
+            mostrarValorMinimo();
         }, 600000);
     }
 });
 
+function mostrarValorMaximo() {
+    $.ajax({
+        url: "http://" + host + ":" + port + "/maximoDelDia",
+        type: 'GET',
+        dataType: 'json',
+        success: (result) => {
+            var maximo = result[0].maximo.toFixed(2);
+            console.log(maximo);
+            $(".leyendaMaximo").text("Máximo del día: " + maximo);
+        }
+    });
+}
+
+function mostrarValorMinimo() {
+    $.ajax({
+        url: "http://" + host + ":" + port + "/minimoDelDia",
+        type: 'GET',
+        dataType: 'json',
+        success: (result) => {
+            var minimo = result[0].minimo.toFixed(2);
+            console.log(minimo);
+            $(".leyendaMinimo").text("Minimo del día: " + minimo); 
+        }
+    });
+}
+
 function mostrarValorInmediatamenteAnteriorAlActual() {
     $.ajax({
-        url: "http://localhost:3000/anterior",
+        url: "http://" + host + ":" + port + "/inicioDelDia",
         type: 'GET',
         dataType: 'json',
         success: (result) => {
             var cotizacionAnterior = result[0].cotizacion.toFixed(2);
             console.log(cotizacionAnterior);
-            var cotizacionActual = parseFloat($(".cotizacionOficial").text());
+            var cotizacionActual = parseFloat($(".cotizacionOficial").text()).toFixed(2);
             console.log(cotizacionActual);
             var status = 0;
             if (cotizacionAnterior === cotizacionActual) {
@@ -38,13 +71,19 @@ function mostrarValorInmediatamenteAnteriorAlActual() {
             setTimeout(function(){
                 if (status === 1) { // tiene que estar verde porque subio
                     $(".cotizacionOficial").removeClass('btn-secondary').removeClass('btn-info').removeClass('btn-danger').addClass('btn-success');
-                    $(".cotizacionOficial").text(cotizacionActual + "     " + (cotizacionActual/cotizacionAnterior - 1).toFixed(2) + "%");
+                    $('.leyendaVariacion').removeClass('hidden').addClass("btn-success");
+                    $(".cotizacionOficial").text(cotizacionActual);
+                    $(".leyendaVariacion").text("Variación diaria: +" + (cotizacionActual/cotizacionAnterior - 1).toFixed(2).toString() + "%");  
                 } else if (status === -1) { // tiene que estar rojo porque bajo
                     $(".cotizacionOficial").removeClass('btn-secondary').removeClass('btn-info').removeClass('btn-success').addClass('btn-danger');
-                    $(".cotizacionOficial").text(cotizacionActual + "     " + (cotizacionActual/cotizacionAnterior - 1).toFixed(2) + "%"); 
+                    $(".leyendaVariacion").removeClass('hidden').addClass('btn-danger');
+                    $(".cotizacionOficial").text(cotizacionActual); 
+                    $(".leyendaVariacion").text("Variacion diaria: -" + (cotizacionActual/cotizacionAnterior - 1).toFixed(2).toString() + "%");  
                 } else if (status === 0) { // tiene que estar azul porque se mantuvo
                     $(".cotizacionOficial").removeClass('btn-secondary').removeClass('btn-success').removeClass('btn-danger').addClass('btn-info');
-                    $(".cotizacionOficial").text(cotizacionActual + "     " + (cotizacionActual/cotizacionAnterior - 1).toFixed(2) + "%");  
+                    $(".leyendaVariacion").removeClass('hidden').addClass('btn-info');
+                    $(".cotizacionOficial").text(cotizacionActual); 
+                    $(".leyendaVariacion").text("Variación diaria: =" + (cotizacionActual/cotizacionAnterior - 1).toFixed(2).toString() + "%");  
                 }
                 $(".fechaCotizacion").removeClass('btn-secondary').addClass('btn-dark');
             }, 3000);
@@ -57,7 +96,7 @@ function mostrarValorInmediatamenteAnteriorAlActual() {
 
 function mostrarValoresDolar() {
     $.ajax({
-        url: "http://localhost:3000/vivo",
+        url: "http://" + host + ":" + port + "/vivo",
         type: 'GET',
         dataType: 'json',
         success: (result) => {
@@ -97,6 +136,8 @@ function mostrarValoresDolar() {
             }
             $(".fechaCotizacion").removeClass('hidden').removeClass('btn-dark').addClass('btn-secondary');
             $(".leyenda").addClass('btn-secondary').removeClass('btn-info').removeClass('btn-danger').removeClass('hidden');
+            $(".leyenda2").addClass('btn-secondary').removeClass('btn-info').removeClass('hidden');
+            $(".leyendaVariacion").removeClass('btn-info').removeClass('hidden').addClass('btn-secondary').text("Calculando variación diaria");
             document.title = "Actualizado: " + actualizacion;
             setTimeout(function(){
                 if (status === 1) { // tiene que estar verde porque subio
@@ -107,6 +148,7 @@ function mostrarValoresDolar() {
                     $(".cotizacion").removeClass('btn-secondary').addClass('btn-info');
                 }
                 $(".fechaCotizacion").removeClass('btn-secondary').addClass('btn-dark');
+                $(".leyenda2").removeClass('btn-secondary').addClass('btn-dark');
             }, 3000);
         }, 
         error: function() {

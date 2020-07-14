@@ -31,6 +31,27 @@ app.get('/anterior', function(req, res) {
         .then(resultado => res.send(resultado), err => console.log(err)); 
 });
 
+app.get('/inicioDelDia', function(req, res) {
+    arrayDeCampos = ['id_registro', 'cotizacion', 'fecha_cotizacion'];
+    filtro = 'DATE(fecha_cotizacion) LIKE CURDATE() LIMIT 1;';
+    config_db.select_a_base_de_datos(arrayDeCampos, 'historico', filtro)
+        .then(resultado => res.send(resultado), err => console.log(err)); 
+});
+
+app.get('/maximoDelDia', function(req, res) {
+    arrayDeCampos = ['MAX(cotizacion) AS maximo'];
+    filtro = 'DATE(fecha_cotizacion) LIKE CURDATE();';
+    config_db.select_a_base_de_datos(arrayDeCampos, 'historico', filtro)
+        .then(resultado => res.send(resultado), err => console.log(err)); 
+});
+
+app.get('/minimoDelDia', function(req, res) {
+    arrayDeCampos = ['MIN(cotizacion) AS minimo'];
+    filtro = 'DATE(fecha_cotizacion) LIKE CURDATE();';
+    config_db.select_a_base_de_datos(arrayDeCampos, 'historico', filtro)
+        .then(resultado => res.send(resultado), err => console.log(err)); 
+});
+
 app.listen(port, function(err, result) {
     if (err) throw err;
     console.log('App escuchando en http://localhost:' + port);
