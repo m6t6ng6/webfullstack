@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const port = 3000;
+const host = process.env.APP_URL;
+const port = process.env.APP_PORT;
 app.use(bodyParser.json());
 app.options('*', cors());
 app.use(cors());
@@ -54,7 +55,7 @@ app.get('/minimoDelDia', function(req, res) {
 
 app.listen(port, function(err, result) {
     if (err) throw err;
-    console.log('App escuchando en http://localhost:' + port);
+    console.log('App escuchando en http://' + host + ':' + port);
 });
 
 inicio();

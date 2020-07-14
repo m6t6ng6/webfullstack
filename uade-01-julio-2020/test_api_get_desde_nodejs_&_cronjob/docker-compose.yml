@@ -1,0 +1,178 @@
+version: '3'
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy 
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      #- /Users/fernandobustamante/.server/nginx-ssl/certs:/etc/nginx/certs:ro
+      #- /Users/fernandobustamante/.server/nginx-ssl/certs
+      - /etc/nginx/vhost.d
+      - /usr/share/nginx/html
+    labels:
+      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy 
+
+  #letsencrypt:
+  #  image: linuxserver/letsencrypt
+  #restart: always
+  #  volumes:
+  #    - /root/.server/nginx-ssl/certs:/etc/nginx/certs:rw
+  #    - /var/run/docker.sock:/var/run/docker.sock:ro
+  #  volumes_from:
+  #    - nginx-proxy:rw
+  #  environment:
+  #     - DEFAULT_EMAIL=ferna2909@hotmail.com
+  
+  #www1:
+  #  image: nginx
+  #  restart: always
+  #  expose:
+  #    - "80"
+  #  volumes:
+  #    - /root/.server/docker-share/html1/production:/usr/share/nginx/html:ro
+  #      #- /root/.server/docker-share/html1/maintenance:/usr/share/nginx/html:ro
+  #  environment:
+  #    - VIRTUAL_HOST=ecommerce.matanga.net.ar
+  #    - LETSENCRYPT_HOST=ecommerce.matanga.net.ar
+  #    - LETSENCRYPT_EMAIL=ferna2909@hotmail.com
+
+  #www2:
+  #  image: nginx
+  #  restart: always
+  #  expose:
+  #    - "80"
+  #  volumes:
+  #    - /root/.server/docker-share/html2/production:/usr/share/nginx/html:ro
+  #      #- /root/.server/docker-share/html2/maintenance:/usr/share/nginx/html:ro
+  #  environment:
+  #    - VIRTUAL_HOST=dolarhoy.matanga.net.ar
+  #    - LETSENCRYPT_HOST=dolarhoy.matanga.net.ar
+  #    - LETSENCRYPT_EMAIL=ferna2909@hotmail.com
+
+  #www3:
+  #  image: nginx
+  #  restart: always
+  #  expose:
+  #    - "80"
+  #  volumes:
+  #    - /root/.server/docker-share/html3/uade-29-abril-2020/ejercitacion_timer:/usr/share/nginx/html:ro
+  #    #- /root/.server/docker-share/html3/uade-24-abril-2020:/usr/share/nginx/html:ro
+  #  environment:
+  #    - VIRTUAL_HOST=timer.matanga.net.ar
+  #    - LETSENCRYPT_HOST=timer.matanga.net.ar
+  #    - LETSENCRYPT_EMAIL=ferna2909@hotmail.com
+      
+  #www4:
+  #  image: nginx
+  #  restart: always
+  #  expose:
+  #    - "80"
+  #  volumes:
+  #    - /root/.server/docker-share/html3/uade-08-mayo-2020/ejercitacion_reloj:/usr/share/nginx/html:ro
+  #    #- /root/.server/docker-share/html3/uade-24-abril-2020:/usr/share/nginx/html:ro
+  #  environment:
+  #    - VIRTUAL_HOST=reloj.matanga.net.ar
+  #    - LETSENCRYPT_HOST=reloj.matanga.net.ar
+  #    - LETSENCRYPT_EMAIL=ferna2909@hotmail.com 
+
+  #www5:
+  #  image: nginx
+  #  restart: always
+  #  expose:
+  #    - "80"
+  #  volumes:
+  #    - /root/.server/docker-share/html3/uade-29-abril-2020/ejercitacion_calculadora:/usr/share/nginx/html:ro
+  #    #- /root/.server/docker-share/html3/uade-24-abril-2020:/usr/share/nginx/html:ro
+  #  environment:
+  #    - VIRTUAL_HOST=calculadora.matanga.net.ar
+  #    - LETSENCRYPT_HOST=calculadora.matanga.net.ar
+  #    - LETSENCRYPT_EMAIL=ferna2909@hotmail.com
+
+  #www6:
+  #  image: nginx
+  #  restart: always
+  #  expose:
+  #    - "80"
+  #  volumes:
+  #    - /root/.server/docker-share/html3/uade-15-mayo-2020/ejercitacion_tateti:/usr/share/nginx/html:ro
+  #    #- /root/.server/docker-share/html3/uade-24-abril-2020:/usr/share/nginx/html:ro
+  #  environment:
+  #    - VIRTUAL_HOST=tateti.matanga.net.ar
+  #    - LETSENCRYPT_HOST=tateti.matanga.net.ar
+  #    - LETSENCRYPT_EMAIL=ferna2909@hotmail.com
+
+  #www7:
+  #  image: nginx
+  #  restart: always
+  #  expose:
+  #    - "80"
+  #  volumes:
+  #    - /root/.server/docker-share/html3/uade-15-mayo-2020/ejercitacion_primos:/usr/share/nginx/html:ro
+  #    #- /root/.server/docker-share/html3/uade-24-abril-2020:/usr/share/nginx/html:ro
+  #  environment:
+  #    - VIRTUAL_HOST=primos.matanga.net.ar
+  #    - LETSENCRYPT_HOST=primos.matanga.net.ar
+  #    - LETSENCRYPT_EMAIL=ferna2909@hotmail.com
+
+  pensaenverde_mysql_db:
+    image: mysql:latest
+    container_name: pensaenverde_mysql_db
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      #- ${MYSQL_DB_VOLUME_LOCAL_PATH}:/var/lib/mysql
+      - /Users/fernandobustamante/.server/pensaenverde_mysql_db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASS=${MYSQL_PASS}
+    networks:
+      - pensaenverde
+
+  www9:
+    image: nginx
+    container_name: pensaenverde_web
+    restart: always
+    expose:
+      - "80"
+    volumes:
+      - ${APP_VOLUME_LOCAL_PATH}:/usr/share/nginx/html:ro
+    environment:
+      - APP_URL=${APP_URL}
+      - APP_PORT=${APP_PORT}
+      - VIRTUAL_HOST=pensaenverde
+      #- LETSENCRYPT_HOST=pensaenverde
+      #- LETSENCRYPT_EMAIL=ferna2909@hotmail.com
+    depends_on:
+      - pensaenverde_app 
+    networks:
+      - pensaenverde
+
+  pensaenverde_app:
+    image: m6t6ng6/pensaenverde:0.0.1
+    container_name: pensaenverde_app
+    restart: always
+    expose:
+      - "3000"
+    environment:
+      - APP_URL=${APP_URL}
+      - APP_PORT=${APP_PORT}
+      - MYSQL_ROOT_USER=${MYSQL_ROOT_USER}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      #- MYSQL_DATABASE=dolar_hoy
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_PORT=${MYSQL_PORT}
+    depends_on:
+      - pensaenverde_mysql_db
+    networks:
+      - pensaenverde
+
+networks:
+  pensaenverde:
+    driver: bridge
+ 

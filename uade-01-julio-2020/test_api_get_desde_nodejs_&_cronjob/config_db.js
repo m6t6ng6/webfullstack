@@ -2,10 +2,10 @@ const db = require('mysql');
 const Promise = require('promise');
 
 config = {
-    host: "raspy",
-    user: "root",
-    password: "peperina",
-    port: 3306
+    host: process.env.MYSQL_HOST,
+    port: process.env.MYSQL_PORT,
+    user: process.env.MYSQL_ROOT_USER,
+    password: process.env.MYSQL_ROOT_PASSWORD
 }
 
 module.exports.conectar_a_mysql = () => {

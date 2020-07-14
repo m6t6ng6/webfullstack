@@ -1,0 +1,21 @@
+{
+    "name": "pensaenverde-api-nodejs",
+    "version": "0.0.1",
+    "description": "pensaenverde-api-nodejs",
+    "author": "Fernando Bustamante <fernando.miguel.bustamante@gmail.com",
+    "license": "MIT",
+    "main": "app.js",
+    "keywords": [
+      "nodejs",
+      "bootstrap",
+      "express"
+    ],
+    "dependencies": {
+      "express": "^4.17.1",
+      "node-cron": "^2.0.3",
+      "body-parser": "^1.19.0",
+      "cors": "^2.8.5",
+      "mysql": "^2.18.1",
+      "promise": "^8.1.0"
+    }
+  }

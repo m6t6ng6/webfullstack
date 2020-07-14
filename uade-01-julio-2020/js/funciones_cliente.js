@@ -1,8 +1,8 @@
 $( document ).ready(function() {
 });
 
-var host = "localhost";
-var port = "3000";
+var host = process.env.APP_URL;
+var port = process.env.APP_PORT;
 
 $(".consulta").click(function(){
     $(this).hide();
