@@ -15,5 +15,5 @@ uade-01-julio-2020:
 				APP_PORT=3000
 				APP_VOLUME_LOCAL_PATH=<dir_local_donde_esta_la_web>
 			]
-
+	}
 	Copiar la pagina web y sus componentes a APP_VOLUME_LOCAL_PATH
