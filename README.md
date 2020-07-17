@@ -17,3 +17,9 @@ uade-01-julio-2020:
 			]
 	}
 	Copiar la pagina web y sus componentes a APP_VOLUME_LOCAL_PATH
+
+PARA PROD:
+# shell > docker-compose --env-file .env.prod up -d
+
+PARA DEV:
+# shell > docker-compose --env-file .env.dev up -d
