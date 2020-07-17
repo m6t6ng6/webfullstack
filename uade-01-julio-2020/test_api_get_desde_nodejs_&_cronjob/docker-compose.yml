@@ -149,7 +149,7 @@ services:
     environment:
       - APP_URL=${APP_URL}
       - APP_PORT=${APP_PORT}
-      - VIRTUAL_HOST=pensaenverde
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
       #- LETSENCRYPT_HOST=pensaenverde
       #- LETSENCRYPT_EMAIL=ferna2909@hotmail.com
     depends_on:
