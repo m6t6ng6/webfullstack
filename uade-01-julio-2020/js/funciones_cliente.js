@@ -1,8 +1,11 @@
 $( document ).ready(function() {
 });
 
-var host = process.env.APP_URL;
-var port = process.env.APP_PORT;
+//var host = process.env.APP_URL;
+//var port = process.env.APP_PORT;
+
+var host = "pensaenverde-app.matanga.net.ar";
+var port = 3000;
 
 $(".consulta").click(function(){
     $(this).hide();
