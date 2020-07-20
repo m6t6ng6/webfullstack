@@ -22,7 +22,7 @@
         Chart.defaults.global.defaultFontColor = "#777";
 
         let massPopChart = new Chart(myChart, {
-            type: 'line',    // bar: grafico de barras, pie: grafico de torta, horizontalBar: barras horizontales, line: grafico de lineas, doughnut: rosquilla, radar: radar chart
+            type: 'doughnut',    // bar: grafico de barras, pie: grafico de torta, horizontalBar: barras horizontales, line: grafico de lineas, doughnut: rosquilla, radar: radar chart
             data: {
                 labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
                 datasets: [{
@@ -53,7 +53,7 @@
             options: {
                 title: {
                     display: true,
-                    text: 'Largest Cies In Masschusetts',
+                    text: 'Largest Cities In Masschusetts',
                     fontSize: 25
                 },
                 legend: {
