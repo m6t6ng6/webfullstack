@@ -159,7 +159,7 @@ services:
       - pensaenverde
 
   pensaenverde_app:
-    image: m6t6ng6/pensaenverde:0.0.1
+    image: m6t6ng6/pensaenverde:0.0.2_production
     hostname: pensaenverde_app
     container_name: pensaenverde_app
     restart: always

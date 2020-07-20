@@ -18,11 +18,21 @@ uade-01-julio-2020:
 	}
 	Copiar la pagina web y sus componentes a APP_VOLUME_LOCAL_PATH
 
-PARA PROD: - DO
+# PARA PROD: - DO
 # shell > docker-compose --env-file .env.prod up -d
+# funciones_cliente.js > 
+# PROD
+# var host = "pensaenverde-app.matanga.net.ar";
+# var port = 3000;
 
-PARA STAGING: - local/ docker - MACOS
+# PARA STAGING: - local/ docker - MACOS
 # shell > docker-compose --env-file .env.staging up -d
+# STAGING
+# var host = "pensaenverde-app";
+# var port = 3000;
 
-PARA DEV: - local/ raspy - no docker - MACOS
+# PARA DEV: - local/ raspy - no docker - MACOS
 # paste environment variables from .env.dev locally in the computer
+# DEV
+# var host = "localhost";
+# var port = 3300;
