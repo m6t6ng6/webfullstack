@@ -6,8 +6,8 @@
 
 html, body {
     background-color: white;
-    min-height: 70%;
-    height: 70%;
+    min-height: 90%;
+    height: 90%;
 }
 
 body {
@@ -55,12 +55,13 @@ body {
     cursor: default;
 }
 
-.consulta {
+.consulta, .historico {
+    margin: 30px 0 0 0;
     width: 400px;
 }
 
 .bg {
-    height: 100%;
+    height: 10%;
     background-image: url("https://previews.123rf.com/images/acarapi/acarapi1509/acarapi150900001/44629152-fondo-del-dinero-con-un-mont%C3%B3n-de-nuevos-billetes-de-100-d%C3%B3lares-estadounidenses-listo-para-utilizar-como-.jpg");
     background-position: bottom;
     background-repeat: no-repeat;

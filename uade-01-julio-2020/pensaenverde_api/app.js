@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.options('*', cors());
 app.use(cors());
 
-const version = "Dolar Hoy - Version 0.1 beta - Fernando Bustamante - JUL-2020";
+const version = "Dolar Hoy - Version 0.2 beta - Fernando Bustamante - JUL-2020";
 
 app.get('/version', function(req, res) {
     console.log("version requested: " + version);
@@ -56,6 +56,13 @@ app.get('/minimoDelDia', function(req, res) {
 app.listen(port, function(err, result) {
     if (err) throw err;
     console.log('App escuchando en http://' + host + ':' + port);
+});
+
+app.get('/datosHistoricoChart', function(req, res) {
+    arrayDeCampos = ['*'];
+    filtro = 'id_registro LIKE "%" ORDER BY id_registro DESC LIMIT 100;';
+    config_db.select_a_base_de_datos(arrayDeCampos, 'historico', filtro)
+        .then(resultado => res.send(resultado), err => console.log(err)); 
 });
 
 inicio();

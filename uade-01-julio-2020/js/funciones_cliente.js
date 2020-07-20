@@ -1,14 +1,19 @@
 $( document ).ready(function() {
 });
 
-//var host = process.env.APP_URL;
-//var port = process.env.APP_PORT;
+// DEV
+var host = "localhost";
+var port = 3300;
 
-var host = "pensaenverde-app.matanga.net.ar";
-var port = 3000;
+// PROD & STAGING
+//var host = "pensaenverde-app.matanga.net.ar";
+//var port = 3000;
+
+var periodo = 300000;   // 5 minutos
 
 $(".consulta").click(function(){
-    $(this).hide();
+    $(".historico").removeClass('hidden');
+    $(this).text('Cotización: actualiza cada 5 minutos automáticamente');
     var primeraVuelta = true;
     if (primeraVuelta === true) {
         mostrarValoresDolar();
@@ -23,7 +28,7 @@ $(".consulta").click(function(){
             setTimeout(mostrarValorInmediatamenteAnteriorAlActual(), 500);
             mostrarValorMaximo();
             mostrarValorMinimo();
-        }, 600000);
+        }, periodo);
     }
 });
 
@@ -116,9 +121,7 @@ function mostrarValoresDolar() {
             };
             var status = 0;
             var cotizacion = result[0].cotizacion;
-            var actualizacion = new Date(result[0].fecha_cotizacion);   // chupa la hora en UTC del servidor
-            var actualizacion = actualizacion.setHours(actualizacion.getHours() - actualizacion.getTimezoneOffset()/60);  // le resta el offset
-            var actualizacion = new Date(actualizacion).toISOString().slice(0, 19).replace('T', ' ');  // muestra hora local del cliente
+            var actualizacion = format_date(result[0].fecha_cotizacion);   
             $(".cotizacionOficial").text(cotizacion.toFixed(2));
             $(".cotizacionSolidario").text((cotizacion * listadoCotizaciones.solidario).toFixed(2));
             $(".cotizacionAgro").text((cotizacion * listadoCotizaciones.agro).toFixed(2));
@@ -159,3 +162,105 @@ function mostrarValoresDolar() {
         }
     });
 };
+
+$(".historico").click(function(){
+    $(this).text('Histórico: actualiza cada 5 minutos automáticamente');
+    $(".chart").removeClass('hidden');
+    $(".consulta").removeClass('hidden');
+
+    var primeraVuelta = true;
+    if (primeraVuelta === true) {
+        mostrarDatosHistoricoChart();
+        primeraVuelta = false;
+    } 
+    if (primeraVuelta === false) {
+        setInterval(function() {
+            mostrarDatosHistoricoChart();
+        }, periodo);
+    }
+});
+
+function mostrarDatosHistoricoChart() {
+    $.ajax({
+        url: "http://" + host + ":" + port + "/datosHistoricoChart",
+        type: 'GET',
+        dataType: 'json',
+        success: (result) => {
+            labels = [];
+            data = [];
+            console.log(result);
+            for (var dato of result) {
+                labels.push(format_date(dato.fecha_cotizacion));
+                data.push(dato.cotizacion);
+            }
+            console.log(labels.reverse());
+            console.log(data.reverse());
+
+            //let myChart = document.getElementById('myChart').getContext('2d');
+            let chart = $(".chart")
+
+            // Global options (for all the objects in the screen)
+            //Chart.defaults.global.defaultFontFamily = 'Lato';
+            //Chart.defaults.global.defaultFontSize = 18;
+            //Chart.defaults.global.defaultFontColor = "#777";
+
+            let massPopChart = new Chart(chart, {
+                type: 'bar',    // bar: grafico de barras, pie: grafico de torta, horizontalBar: barras horizontales, line: grafico de lineas, doughnut: rosquilla, radar: radar chart
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        //label: 'Precio del dólar en pesos argentinos por cada unidad de dólar norteamericano desde el inicio de todos los tiempos',
+                        label: 'ARS/ USD',
+                        data: data,
+                        backgroundColor: 'green',
+                            //[
+                            //'rgba(255, 99, 132, 0.6)',   // for Boston
+                            //'rgba(54, 162, 235, 0.6)',   // for Worcester
+                            //'rgba(255, 206, 86, 0.6)',   // for Springfield
+                            //'rgba(75, 192, 192, 0.6)',
+                            //'rgba(153, 102, 255, 0.6)',
+                            //'rgba(255, 159, 64, 0.6)',
+                            //'rgba(255, 99, 132, 0.6)'
+                            //],
+                        borderWidth: 1,
+                        borderColor: '#777',
+                        hoverBorderWidth: 3,
+                        hoverBorderColor: "black"
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Histórico del dólar',
+                        fontSize: 25
+                    },
+                    legend: {
+                        display: true,   // true: shows the legend, better to be true in piechart type
+                        position: "top",
+                        labels: {
+                            fontColor: "#000"
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            left: 40,
+                            right: 0,
+                            bottom: 0,
+                            top: 0
+                        }
+                    },
+                    tooltips: {
+                        enabled: true     // false: deactivates the information when hovers on each bar
+                    }
+                }
+            });
+        }
+    });
+}
+
+function format_date(date) {
+    // entrega horario local del cliente
+    var date = new Date(date);
+    var date = date.setHours(date.getHours() - date.getTimezoneOffset()/60);
+    return new Date(date).toISOString().slice(0, 19).replace('T', ' ');
+}
