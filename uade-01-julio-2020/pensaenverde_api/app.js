@@ -76,7 +76,8 @@ function inicio() {
 }
 
 //cron.schedule('* * * * *', () => {
-cron.schedule('30 9,11,12,13,15,17 * * Mon,Tue,Wed,Thu,Fri', () => {
+// 9.30am, 11.30am, 12.30pm, 1.30pm, 3.30pm, 5.30pm ART
+cron.schedule('30 12,14,15,16,18,20 * * Mon,Tue,Wed,Thu,Fri', () => {
     var fecha = config_db.format_date();
     console.log('Tomando valor del dolar, vuelta periodica (actualización). - ' + fecha);
     valor_del_dolar_insert_en_mysql();
