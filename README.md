@@ -24,12 +24,18 @@ uade-01-julio-2020:
 # PROD
 # var host = "pensaenverde-app.matanga.net.ar";
 # var port = 3000;
+# docker-compose.yml
+# pensaenverde_app:
+#   image: m6t6ng6/pensaenverde:x.x.x_production
 
 # PARA STAGING: - local/ docker - MACOS
 # shell > docker-compose --env-file .env.staging up -d
 # STAGING
 # var host = "pensaenverde-app";
 # var port = 3000;
+# docker-compose.yml
+# pensaenverde_app:
+#   image: m6t6ng6/pensaenverde:x.x.x_staging
 
 # PARA DEV: - local/ raspy - no docker - MACOS
 # paste environment variables from .env.dev locally in the computer

@@ -6,12 +6,12 @@ $( document ).ready(function() {
 //var port = 3300;
 
 // STAGING
-// var host = "pensaenverde-app";
-// var port = 3000;
+var host = "pensaenverde-app";
+var port = 3000;
 
 // PROD
-var host = "pensaenverde-app.matanga.net.ar";
-var port = 3000;
+// var host = "pensaenverde-app.matanga.net.ar";
+// var port = 3000;
 
 var periodo = 300000;   // 5 minutos
 
