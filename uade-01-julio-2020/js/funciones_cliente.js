@@ -6,12 +6,12 @@ $( document ).ready(function() {
 //var port = 3300;
 
 // STAGING
-// var host = "pensaenverde-app";
-// var port = 3000;
+var host = "pensaenverde-app";
+var port = 3000;
 
 // PROD
-var host = "pensaenverde-app.matanga.net.ar";
-var port = 3000;
+//var host = "pensaenverde-app.matanga.net.ar";
+//var port = 3000;
 
 var periodo = 300000;   // 5 minutos
 
@@ -175,11 +175,13 @@ $(".historico").click(function(){
     var primeraVuelta = true;
     if (primeraVuelta === true) {
         mostrarDatosHistoricoChart();
+        //$(".chart").load(" .chart");
         primeraVuelta = false;
     } 
     if (primeraVuelta === false) {
         setInterval(function() {
             mostrarDatosHistoricoChart();
+            //$(".chart").load(" .chart");
         }, periodo);
     }
 });
@@ -208,7 +210,11 @@ function mostrarDatosHistoricoChart() {
             //Chart.defaults.global.defaultFontSize = 18;
             //Chart.defaults.global.defaultFontColor = "#777";
 
-            let massPopChart = new Chart(chart, {
+            //elimina el grafico anterior (bug-fix)
+            if (window.bar != undefined) window.bar.destroy();
+            
+            //crea el grafico
+            window.bar = new Chart(chart, {
                 type: 'bar',    // bar: grafico de barras, pie: grafico de torta, horizontalBar: barras horizontales, line: grafico de lineas, doughnut: rosquilla, radar: radar chart
                 data: {
                     labels: labels,
