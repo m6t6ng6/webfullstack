@@ -82,19 +82,19 @@ function mostrarValorInmediatamenteAnteriorAlActual() {
             }
             setTimeout(function(){
                 if (status === 1) { // tiene que estar verde porque subio
-                    $(".cotizacionOficial").removeClass('btn-secondary').removeClass('btn-info').removeClass('btn-danger').addClass('btn-success');
+                    $(".cotizacionMayorista").removeClass('btn-secondary').removeClass('btn-info').removeClass('btn-danger').addClass('btn-success');
                     $('.leyendaVariacion').removeClass('hidden').addClass("btn-success");
-                    $(".cotizacionOficial").text(cotizacionActual);
+                    $(".cotizacionMayorista").text(cotizacionActual);
                     $(".leyendaVariacion").text("Variación diaria: +" + (cotizacionActual/cotizacionAnterior - 1).toFixed(2).toString() + "%");  
                 } else if (status === -1) { // tiene que estar rojo porque bajo
-                    $(".cotizacionOficial").removeClass('btn-secondary').removeClass('btn-info').removeClass('btn-success').addClass('btn-danger');
+                    $(".cotizacionMayorista").removeClass('btn-secondary').removeClass('btn-info').removeClass('btn-success').addClass('btn-danger');
                     $(".leyendaVariacion").removeClass('hidden').addClass('btn-danger');
-                    $(".cotizacionOficial").text(cotizacionActual); 
+                    $(".cotizacionMayorista").text(cotizacionActual); 
                     $(".leyendaVariacion").text("Variacion diaria: -" + (cotizacionActual/cotizacionAnterior - 1).toFixed(2).toString() + "%");  
                 } else if (status === 0) { // tiene que estar azul porque se mantuvo
-                    $(".cotizacionOficial").removeClass('btn-secondary').removeClass('btn-success').removeClass('btn-danger').addClass('btn-info');
+                    $(".cotizacionMayorista").removeClass('btn-secondary').removeClass('btn-success').removeClass('btn-danger').addClass('btn-info');
                     $(".leyendaVariacion").removeClass('hidden').addClass('btn-info');
-                    $(".cotizacionOficial").text(cotizacionActual); 
+                    $(".cotizacionMayorista").text(cotizacionActual); 
                     $(".leyendaVariacion").text("Variación diaria: =" + (cotizacionActual/cotizacionAnterior - 1).toFixed(2).toString() + "%");  
                 }
                 $(".fechaCotizacion").removeClass('btn-secondary').addClass('btn-dark');
