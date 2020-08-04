@@ -6,12 +6,12 @@ $( document ).ready(function() {
 //var port = 3300;
 
 // STAGING
-//var host = "pensaenverde-app";
-//var port = 3000;
+var host = "pensaenverde-app";
+var port = 3000;
 
 // PROD
-var host = "pensaenverde-app.matanga.net.ar";
-var port = 3000;
+// var host = "pensaenverde-app.matanga.net.ar";
+// var port = 3000;
 
 var periodo = 300000;   // 5 minutos
 
@@ -70,7 +70,7 @@ function mostrarValorInmediatamenteAnteriorAlActual() {
         success: (result) => {
             var cotizacionAnterior = result[0].cotizacion.toFixed(2);
             console.log(cotizacionAnterior);
-            var cotizacionActual = parseFloat($(".cotizacionOficial").text()).toFixed(2);
+            var cotizacionActual = parseFloat($(".cotizacionMayorista").text()).toFixed(2);
             console.log(cotizacionActual);
             var status = 0;
             if (cotizacionAnterior === cotizacionActual) {
@@ -117,8 +117,9 @@ function mostrarValoresDolar() {
             *  status = -1 -> bajo respecto a la medicion anterior
             */
             var listadoCotizaciones = {
-                "oficial": 1,
-                "solidario": 1.3,
+                "mayorista": 1,   // no se usa, es el valor unitario (sale de la base de datos)
+                "oficial": 0.99,
+                "solidario": 1.37,  // se multiplica por 1.37 porque es la compra del mayorista el dato que tenemos y el 1.3 sale de la venta del oficial
                 "agro": 0.7,
                 "blue": 1.8,
                 "ccl": 1.55
@@ -126,12 +127,14 @@ function mostrarValoresDolar() {
             var status = 0;
             var cotizacion = result[0].cotizacion;
             var actualizacion = format_date(result[0].fecha_cotizacion);   
-            $(".cotizacionOficial").text(cotizacion.toFixed(2));
+            $(".cotizacionMayorista").text(cotizacion.toFixed(2));
+            $(".cotizacionOficial").text((cotizacion * listadoCotizaciones.oficial).toFixed(2)); 
             $(".cotizacionSolidario").text((cotizacion * listadoCotizaciones.solidario).toFixed(2));
             $(".cotizacionAgro").text((cotizacion * listadoCotizaciones.agro).toFixed(2));
             $(".cotizacionBlue").text((cotizacion * listadoCotizaciones.blue).toFixed(2));
             $(".cotizacionCcl").text((cotizacion * listadoCotizaciones.ccl).toFixed(2));       
             $(".fechaCotizacion").text("Actualizado: " + actualizacion);
+            $(".leyendaMayorista").text("Mayorista ARS/USD Compra");
             $(".leyendaOficial").text("Oficial ARS/USD Compra");
             $(".leyendaSolidario").text("Solidario ARS/USD Compra");
             $(".leyendaAgro").text("Agro ARS/USD Compra");
@@ -241,7 +244,7 @@ function mostrarDatosHistoricoChart() {
                 options: {
                     title: {
                         display: true,
-                        text: 'Histórico del dólar',
+                        text: 'Histórico del dólar mayorista',
                         fontSize: 25
                     },
                     legend: {
