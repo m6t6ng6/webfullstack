@@ -13,10 +13,6 @@ class Hijo extends React.Component
         const { listaProductos } = this.props;
         return (
             <>
-                <h2>Hola { persona.nombre + " " + persona.apellido } </h2>
-                <h3>Edad: { persona.edad }</h3>
-                <h3>Persona: { persona.domicilio } </h3>
-                
                 <ul>
                     { listaProductos.map( (producto, index) => <li key={index}>{ producto }</li>)}
                 </ul>
