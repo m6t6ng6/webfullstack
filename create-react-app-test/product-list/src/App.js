@@ -58,7 +58,6 @@ class App extends React.Component {
 
     agregarItemLista = ( evento ) => {
       const { producto, cantidad } = this.state;
-      const { productos } = this.state;
       const productoNuevo = {
         id: this.state.productos.length + 1,
         nombre: producto,
